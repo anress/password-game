@@ -13,7 +13,7 @@ const passwordIsValid = computed<boolean>(() => {
 });
 
 const activeRules = computed<Rule[]>(() => {
-  return rules.slice(0, activeIndex.value - 1);
+  return rules.slice(0, activeIndex.value + 1);
 });
 
 function updatePassword(pass: string) {
@@ -60,13 +60,15 @@ function redirect() {
         :isValid="passwordIsValid"
         @updatePw="updatePassword"
       />
-      <RuleCard
-        v-for="(r, index) in rules"
-        :activeIndex="activeIndex"
-        :rule="r"
-        :order="index"
-        :password="password"
-      />
+      <div class="flex flex-col-reverse">
+        <RuleCard
+          v-for="(r, index) in rules"
+          :activeIndex="activeIndex"
+          :rule="r"
+          :order="index"
+          :password="password"
+        />
+      </div>
     </div>
   </div>
 </template>
