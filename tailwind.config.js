@@ -8,12 +8,15 @@ export default {
     extend: {
       colors: {
         light: "#FFFFFF",
-        green: "#335145",
+        dark: "#482509",
+        brown: "#361B07",
         red: "#BA1B1D",
-        cream: "#FEFADC",
+        green: "#335145",
         sand: {
-          light: "#F6D4BA",
-          dark: "#F3B391",
+          100: "#F6D4BA",
+          200: "#F3C7A5",
+          300: "#F3B391",
+          400: "#A35514",
         },
       },
     },
