@@ -12,7 +12,6 @@ function sumDigitsFromString(str: string) {
 
 function countRegexMatches(str: string, regex: RegExp) {
   const matches = str.match(regex);
-  console.log(matches);
   return matches ? matches.length : 0;
 }
 
