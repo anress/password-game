@@ -13,7 +13,7 @@ const passwordIsValid = computed<boolean>(() => {
 });
 
 const activeRules = computed<Rule[]>(() => {
-  return rules.slice(0, activeIndex.value - 1);
+  return rules.slice(0, activeIndex.value + 1);
 });
 
 function updatePassword(pass: string) {
@@ -29,8 +29,8 @@ function redirect() {
 </script>
 
 <template>
-  <div class="bg-sand-100 min-h-screen text-dark mx-auto flex justify-center">
-    <div class="max-w-[600px] flex flex-col p-10 sm:p-20">
+  <div id="game-container" class="bg-sand-100 min-h-screen text-dark mx-auto flex justify-center">
+    <div class="max-w-[600px] flex flex-col p-6 sm:p-20">
       <div class="flex items-center mb-8">
         <h1 class="text-3xl md:text-4xl">Weihnachts-Passwort-Spiel!</h1>
         <i class="fa-solid fa-candy-cane text-red ml-2"></i>
@@ -60,13 +60,15 @@ function redirect() {
         :isValid="passwordIsValid"
         @updatePw="updatePassword"
       />
-      <RuleCard
-        v-for="(r, index) in rules"
-        :activeIndex="activeIndex"
-        :rule="r"
-        :order="index"
-        :password="password"
-      />
+      <div class="flex flex-col-reverse">
+        <RuleCard
+          v-for="(r, index) in rules"
+          :activeIndex="activeIndex"
+          :rule="r"
+          :order="index"
+          :password="password"
+        />
+      </div>
     </div>
   </div>
 </template>
