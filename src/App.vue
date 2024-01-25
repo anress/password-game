@@ -32,12 +32,11 @@ function redirect() {
   <div class="bg-sand-100 min-h-screen text-dark mx-auto flex justify-center">
     <div class="max-w-[600px] flex flex-col p-10 sm:p-20">
       <div class="flex items-center mb-8">
-        <h1 class="text-3xl md:text-4xl">Weihnachts-Passwort-Spiel!</h1>
-        <i class="fa-solid fa-candy-cane text-red ml-2"></i>
+        <h1 class="text-3xl md:text-4xl">The Password Game</h1>
       </div>
-      <p class="mb-4">
+      <!-- <p class="mb-4">
         Das Christkind braucht ein neues Passwort. Kannst du helfen?
-      </p>
+      </p> -->
       <transition
         enter-from-class="-translate-y-[50%] opacity-0 !-mt-12"
         enter-active-class="transition duration-700"
@@ -49,8 +48,8 @@ function redirect() {
           @click="redirect"
           class="rounded-md p-4 my-4 border-2 border-green text-center hover:p-6 hover:-mx-2 hover:shadow-xl hover:border-4 hover:cursor-pointer hover:bg-sand-200 transition-all duration-300"
         >
-          <h2 class="text-2xl">Glückwunsch!</h2>
-          <a :href="link"> Klicke hier, um ein Geschenk zu erhalten! </a>
+          <h2 class="text-2xl">Congratulations!</h2>
+          <a :href="link"> Click here to receive a gift.</a>
 
           <div><i class="fa-solid fa-gifts text-green"></i></div>
         </div>

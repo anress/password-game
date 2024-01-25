@@ -43,7 +43,7 @@ const isFullfilled = computed<boolean>(() => {
             'fa-times': !isFullfilled,
           }"
         ></i>
-        <h2 class="text-2xl">Regel {{ order + 1 }}:</h2>
+        <h2 class="text-2xl">Rule {{ order + 1 }}:</h2>
       </div>
       <div class="p-4">
         <div>{{ rule.description }}</div>
