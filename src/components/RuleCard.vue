@@ -26,7 +26,7 @@ const isFullfilled = computed<boolean>(() => {
       :class="{
         'my-2 bg-light border-4 rounded-md': true,
         'border-green': isFullfilled,
-        'border-red': !isFullfilled,
+        'border-red order-1': !isFullfilled,
       }"
     >
       <div
