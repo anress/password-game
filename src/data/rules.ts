@@ -1,15 +1,5 @@
 import { Rule } from "../interfaces/Rule.ts";
 
-function sumDigitsFromString(str: string) {
-  let sum = 0;
-  for (let i = 0; i < str.length; i++) {
-      if (!isNaN(parseInt(str[i]))) {
-          sum += parseInt(str[i]);
-      }
-  }
-  return sum;
-}
-
 function countRegexMatches(str: string, regex: RegExp) {
   const matches = str.match(regex);
   return matches ? matches.length : 0;
@@ -17,32 +7,21 @@ function countRegexMatches(str: string, regex: RegExp) {
 
 export const rules: Rule[] = [
   {
-      description: "Das Passwort muss mindestens 5 Zeichen lang sein.",
-      condition: (pw: string) => pw.length >= 5,
+    description: "The password must be at least 5 characters long.",
+    condition: (pw: string) => pw.length >= 5,
   },
   {
-      description: "Das Passwort muss den Tag deines Geburtstags als Zahl enthalten.",
-      condition: (pw: string) => pw.includes("26"),
+    description: "The Password must contain today's date (DD-M-YYYY).",
+    condition: (pw: string) => {
+      const today = new Date();
+      return (
+        pw.includes(today.getDate().toString()+"-"+(today.getMonth()+1).toString()+"-"+today.getFullYear().toString())
+      );
+    },
   },
   {
-      description: "Das Passwort muss den Namen eines der fliegenden Rentiere sowie ein Rentier-Emoji enthalten.",
-      condition: (pw: string) => {
-          const reindeer = ["dasher", "dancer", "prancer", "vixen", "comet", "cupid", "donner", "blitzen", "rudolph"];
-          return reindeer.some(r => pw.toLowerCase().includes(r)) && pw.includes("🦌");
-      },
-  },
-  {
-      description: "Das Passwort muss die Anzahl der Tage von Weihnachten bis Ostern 2024 enthalten.",
-      condition: (pw: string) => pw.includes("98"),
-  },
-  {
-      description: "Das Passwort ist noch nicht festlich genug. Bitte ein paar Weihnachts-Emojis hinzufügen.",
-      condition: (pw: string) => countRegexMatches(pw, /🎄|🎁|🤶|🎅|🧑‍🎄|🦌|🌟|❄️|⛄/g) >= 5,
-  },
-  {
-      description: "Das Passwort ist fast fertig: binde am Anfang und am Ende noch eine Schleife herum!",
-      condition: (pw: string) => pw.startsWith("🎀") && pw.endsWith("🎀"),
+    description:
+      "The Password is almost done: wrap it with a bow on each side!",
+    condition: (pw: string) => pw.startsWith("🎀") && pw.endsWith("🎀"),
   }
 ];
-
-export const link: string = "https://anja.codes";

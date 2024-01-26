@@ -3,7 +3,7 @@ import { computed, ref } from "vue";
 import Input from "./components/Input.vue";
 import RuleCard from "./components/RuleCard.vue";
 import { Rule } from "./interfaces/Rule.ts";
-import { rules, link } from "./data/rules.ts";
+import { rules } from "./data/rules.ts";
 
 let password = ref("");
 let activeIndex = ref(0);
@@ -22,21 +22,19 @@ function updatePassword(pass: string) {
     activeIndex.value++;
   }
 }
-
-function redirect() {
-  window.location.href = link;
-}
 </script>
 
 <template>
-  <div id="game-container" class="bg-sand-100 min-h-screen text-dark mx-auto flex justify-center">
+  <div
+    id="game-container"
+    class="bg-sand-100 min-h-screen text-dark mx-auto flex justify-center"
+  >
     <div class="max-w-[600px] flex flex-col p-6 sm:p-20">
       <div class="flex items-center mb-8">
-        <h1 class="text-3xl md:text-4xl">The Password Game</h1>
+        <h1 class="text-3xl md:text-4xl text-center w-full">
+          The Password Game
+        </h1>
       </div>
-      <!-- <p class="mb-4">
-        Das Christkind braucht ein neues Passwort. Kannst du helfen?
-      </p> -->
       <transition
         enter-from-class="-translate-y-[50%] opacity-0 !-mt-12"
         enter-active-class="transition duration-700"
@@ -45,13 +43,10 @@ function redirect() {
       >
         <div
           v-if="passwordIsValid"
-          @click="redirect"
-          class="rounded-md p-4 my-4 border-2 border-green text-center hover:p-6 hover:-mx-2 hover:shadow-xl hover:border-4 hover:cursor-pointer hover:bg-sand-200 transition-all duration-300"
+          class="rounded-md p-4 my-4 border-2 border-green text-center"
         >
           <h2 class="text-2xl">Congratulations!</h2>
-          <a :href="link"> Click here to receive a gift.</a>
-
-          <div><i class="fa-solid fa-gifts text-green"></i></div>
+          <p> You chose a valid password.</p>
         </div>
       </transition>
       <Input
